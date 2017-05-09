@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-4 budget-form">
+    <%= form_for @budget do |f| %>
+      <div class="form-group">
+        <%= label_tag :name, "What do you want to call your budget?" %>
+        <%= f.text_field :name, class: "form-control"%>
+      </div>
+      <%= f.submit :submit, class: "btn btn-block btn-success"%>
+    <% end %>
+  </div>
+</div>

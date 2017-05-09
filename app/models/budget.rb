@@ -1,0 +1,5 @@
+class Budget < ApplicationRecord
+  
+  
+  
+end
