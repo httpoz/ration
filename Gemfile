@@ -29,14 +29,18 @@ gem 'jquery-rails', '4.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap', '~> 4.0.0.alpha6'
+
 
 # Use Hirb for console table display
 gem 'hirb', '~> 0.7.3'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
-end
+# bootstrap css framework and dependencies
+gem 'bootstrap-sass', '~> 3.3.6'
+
+# devise for authentication and user management
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
