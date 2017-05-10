@@ -38,7 +38,9 @@ gem 'hirb', '~> 0.7.3'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # devise for authentication and user management
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
