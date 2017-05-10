@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   authenticated do
     root 'dashboard#index'
   end
+  
+  resources :budgets
+  
+  resources :expenses, only: [:create, :destroy]
+  
 end

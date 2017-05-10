@@ -20,6 +20,8 @@ class BudgetsController < ApplicationController
   # Will be removed since budget will be showed through user
   def show
     @budget = Budget.find( params[:id] )
+    # This should come from a categorys table
+    @categorys = %w(rent car phone travel electricity wifi groceries insurance)
   end
   
   private
