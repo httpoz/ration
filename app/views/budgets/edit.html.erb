@@ -1,6 +1,9 @@
 <h1>Editing Budget</h1>
-
-<%= render 'form', budget: @budget %>
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'form', budget: @budget %>
+  </div>
+</div>
 
 <%= link_to 'Show', @budget %> |
 <%= link_to 'Back', budgets_path %>
