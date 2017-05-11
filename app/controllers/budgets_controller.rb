@@ -1,9 +1,13 @@
-class BudgetsController < ApplicationController 
-  
+class BudgetsController < ApplicationController
+
+  def index
+    @budgets = Budget.all
+  end
+
   def new
     @budget = Budget.new
   end
-  
+
   def create
     # This will instead be build through User association
     # With User.budgets.build
@@ -16,17 +20,17 @@ class BudgetsController < ApplicationController
       render :new
     end
   end
-  
+
   # Will be removed since budget will be showed through user
   def show
     @budget = Budget.find( params[:id] )
     # This should come from a categorys table
     @categorys = %w(rent car phone travel electricity wifi groceries insurance)
   end
-  
+
   private
     def budget_params
       params.require(:budget).permit(:name)
     end
-  
+
 end
