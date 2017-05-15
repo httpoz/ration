@@ -2,40 +2,32 @@
   <div class="col-md-8 col-md-offset-2 budget-form">
     <h1 class="text-center"><%= @budget.name %></h1>
     
-    <!--This table is an example of a spreatsheet structure-->
-    <!--This code will be changed-->
-    <table class="budget">
-
-      <thead>
-        <th>Categorys go here</th>
-        <th>Jan</th>
-        <th>Feb</th>
-        <th>Mar</th>
-        <th>Apr</th>
-        <th>May</th>
-      </thead>
+    <h3>Now to populate your budget by writing down some expenses</h1>
+    <%= form_for @expense, url: expenses_path do |f| %>
       
-      <tbody>
-        <!--Loops over a categorys array to create corresponding table data-->
-        <% @categorys.each do |category| %>
-          <tr>
-            <td><%= category %></td>
-            <!-- creates a <td> for all the months (5 for now) -->
-            <% (1..5).each do |i| %>
-              <td>
-                <!--loops through the expenses
-                <% @budget.expenses.each do |expense| %>
-                  <!-- If the categorys and the date matches, places the expense in the created cell -->
-                  <% if expense.category == category && expense.date.month == i %>
-                    <%= "#{expense.amount}$" %>
-                  <% end %>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-       </tbody>
-    </table>
-    <!--Table code ends here-->
+      <%= @categories.each do |category| %>
+        <%= category.name %><br/>
+      <% end %>
+      
+      <div class="form-control">
+        <%= label_tag :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-control">
+        <%= label_tag :amount %>
+        <%= f.text_field :amount %>
+      </div>
+      <div class="form-control">
+        <%= label_tag :category_id %>
+        <%= f.text_field :category_id %>
+      </div>
+      <div class="form-control">
+        <%= label_tag :date %>
+        <%= f.date_field :date %>
+      </div>
+      
+      <%= f.submit :submit, class: 'btn btn-primary' %>
+    <% end %>
+    
   </div>
 </div>
