@@ -1,33 +1,16 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 budget-form">
     <h1 class="text-center"><%= @budget.name %></h1>
-    
-    <h3>Now to populate your budget by writing down some expenses</h1>
-    <%= form_for @expense, url: expenses_path do |f| %>
       
-      <%= @categories.each do |category| %>
-        <%= category.name %><br/>
+      <!--List of categories each with a link to new expense-->
+      <ul class="list-unstyled">
+      <% @categories.each do |category| %>
+        <li>
+          <!--Passes the category ID as a string-->
+          <%= link_to category.name, new_budget_expense_path(@budget,
+                                                      category: category) %>
+        </li>
       <% end %>
-      
-      <div class="form-control">
-        <%= label_tag :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="form-control">
-        <%= label_tag :amount %>
-        <%= f.text_field :amount %>
-      </div>
-      <div class="form-control">
-        <%= label_tag :category_id %>
-        <%= f.text_field :category_id %>
-      </div>
-      <div class="form-control">
-        <%= label_tag :date %>
-        <%= f.date_field :date %>
-      </div>
-      
-      <%= f.submit :submit, class: 'btn btn-primary' %>
-    <% end %>
-    
+      </ul>
   </div>
 </div>

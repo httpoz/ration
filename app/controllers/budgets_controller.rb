@@ -53,7 +53,6 @@ class BudgetsController < ApplicationController
 
   def show
     @categories = @budget.get_categories
-    @expense = @budget.expenses.build()
   end
 
   private
