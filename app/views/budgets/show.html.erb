@@ -8,7 +8,8 @@
       <ul class="list-unstyled">
       <% @categories.each do |category| %>
         <li>
-          <%= link_to category.name, '#' %>
+          <!--Passes category id to form as query string-->
+          <%= link_to category.name, new_budget_expense_path(@budget.id, category: category.id) %>
         </li>
       <% end %>
       </ul> 

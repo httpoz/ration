@@ -6,8 +6,9 @@
         <%= @expense.errors.full_messages.join(", ") %>
       <% end %>
     </div>
-    
-    <%= text_field_tag :category_name %>
+
+    <%= label_tag 'Category: ' %>
+    <%= text_field_tag :category_name, nil, class: 'form-control' %>
     
     <div class="form-group">
         <%= label_tag :name %>

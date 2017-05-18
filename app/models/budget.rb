@@ -7,7 +7,7 @@ class Budget < ApplicationRecord
   belongs_to :user
   
   def category_included?(id)
-    # Checks if a category with the pass ID exists
+    # Checks if a category with the passed ID exists
     # And if it is included in the budgets categories collection
     Category.exists?(id) && self.categories.includes(Category.find(id))
   end
