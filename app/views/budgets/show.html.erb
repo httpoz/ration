@@ -10,6 +10,8 @@
         <li>
           <!--Passes category id to form as query string-->
           <%= link_to category.name, new_budget_expense_path(@budget.id, category: category.id) %>
+          <!--Shows total expenses in category-->
+          <span class="right-span">Total expense: <strong><%= calculate_total(category) %>$</strong></span>
         </li>
       <% end %>
       </ul> 

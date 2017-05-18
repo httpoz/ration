@@ -1,11 +1,14 @@
 
 .budget-form{
   margin-top: 50px;
+  .right-span{
+    float: right;
+  }
+  li{
+    border-bottom: 1px solid #808080;
+    padding: 10px ;
+  }
 }
 .budget{
   margin-bottom: 100px;
-  td, th{
-    border: 1px solid black;
-    padding: 20px;
-  }
 }
