@@ -52,7 +52,7 @@ class BudgetsController < ApplicationController
   end
 
   def show
-    @categories = @budget.get_categories
+    @categories = @budget.categories
   end
 
   private

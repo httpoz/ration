@@ -2,14 +2,14 @@ class Budget < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
   # The distinct option prevents budgets from saving multiple categories
-  has_many :categories, -> { distinct }, through: :expenses
+  has_many :categories, -> { distinct }, through: :expenses, validate: :false
   
   belongs_to :user
   
-  # Returns an array with a budgets categories OR 5 basic categories for 
-  # Budgets without expenses ( like newly created ones )
-  def get_categories
-    !self.categories.empty? ? self.categories : Category.first(5) 
+  def category_included?(id)
+    # Checks if a category with the pass ID exists
+    # And if it is included in the budgets categories collection
+    Category.exists?(id) && self.categories.includes(Category.find(id))
   end
   
 end

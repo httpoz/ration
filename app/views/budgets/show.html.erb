@@ -1,16 +1,21 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2 budget-form">
     <h1 class="text-center"><%= @budget.name %></h1>
-      
-      <!--List of categories each with a link to new expense-->
+    
+    <% if !@categories.empty? %>
+      <p> Add expenses by clicking one of your categories</p>
+      <!--List of categories -->
       <ul class="list-unstyled">
       <% @categories.each do |category| %>
         <li>
-          <!--Passes the category ID as a string-->
-          <%= link_to category.name, new_budget_expense_path(@budget,
-                                                      category: category) %>
+          <%= link_to category.name, '#' %>
         </li>
       <% end %>
-      </ul>
+      </ul> 
+      <p>Or click here to create expense in a new category</p>
+      <%= link_to "New expense", new_budget_expense_path(@budget.id), class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
