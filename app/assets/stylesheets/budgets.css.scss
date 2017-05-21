@@ -1,6 +1,5 @@
-
 .budget-form{
-  margin-top: 50px;
+  margin-top: 20px;
   .right-span{
     float: right;
   }
@@ -11,4 +10,18 @@
 }
 .budget{
   margin-bottom: 100px;
+}
+
+.expenses-index{
+  th, td{
+    padding: 5px 10px;
+  } 
+}
+
+aside{
+  margin-top: 20px;
+  h3{
+    margin-top: 40px;
+    padding: 10px;
+  }
 }

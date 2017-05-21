@@ -1,5 +1,9 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2 budget-form">
+  <aside class="col-md-2">
+    <h3 class="text-center">See all expenses</h3>
+    <%= link_to "Expenses list", budget_expenses_path(@budget), class: "btn btn-primary btn-block" %>
+  </aside>
+  <div class="col-md-8 budget-form">
     <h1 class="text-center"><%= @budget.name %></h1>
     
     <% if !@categories.empty? %>
@@ -15,7 +19,7 @@
         </li>
       <% end %>
       </ul> 
-      <p>Or click here to create expense in a new category</p>
+      <p>Create expense in a new category</p>
       <%= link_to "New expense", new_budget_expense_path(@budget.id), class: "btn btn-primary" %>
     <% else %>
       <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary" %>

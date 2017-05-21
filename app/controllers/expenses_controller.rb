@@ -38,6 +38,10 @@ class ExpensesController < ApplicationController
     end
   end
   
+  def index
+    @expenses = @budget.expenses
+  end
+  
   private 
     def set_budget
       @budget = Budget.find(params[:budget_id])
