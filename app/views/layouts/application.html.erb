@@ -24,6 +24,7 @@
         <ul class="nav navbar-nav">
           <% if current_user.present? %>
           <li><%= link_to "Budgets", budgets_path %></li>
+          <li><%= link_to "Categories", categories_path %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
