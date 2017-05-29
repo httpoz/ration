@@ -19,8 +19,7 @@ class BudgetsController < ApplicationController
     # With User.budgets.build
     @budget = current_user.budgets.new( budget_params )
     if @budget.save
-      # Should redirect to User where budget can be displayed
-      redirect_to @budget
+      redirect_to @budget, notice: 'Successfully created budget'
     else
       # Error message should display¨
       render :new
