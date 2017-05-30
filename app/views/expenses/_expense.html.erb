@@ -1,0 +1,11 @@
+<tr>
+  <td><%= expense.name %></td>
+  <td><%= expense.amount %>$</td>
+  <td><%= expense.date %></td>
+  <td><%= expense.created_at.strftime("%Y-%m-%d") %></td>
+  <td><%= expense.category.name %></td>
+  <td><%= link_to 'Edit', '#' %></td>
+  <td><%= link_to 'Destroy', budget_expense_path(@budget, expense), method: :delete  %></td>
+</tr>
+  
+  

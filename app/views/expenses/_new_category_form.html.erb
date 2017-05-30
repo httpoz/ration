@@ -1,0 +1,27 @@
+<%= form_for @expense, url: budget_expenses_path do |f| %>
+    
+    <div id="error_explanation">
+      <% if @expense.errors.messages.any? %>
+        <p><%= pluralize(@expense.errors.count, "error") %> prohibited this budget from being saved</p>
+        <%= @expense.errors.full_messages.join(", ") %>
+      <% end %>
+    </div>
+
+    <%= label_tag 'Category: ' %>
+    <%= text_field_tag :category_name, nil, class: 'form-control' %>
+    
+    <div class="form-group">
+        <%= label_tag :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :amount %>
+      <%= f.text_field :amount, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :date %>
+      <%= f.date_field :date, class: 'form-control' %>
+    </div>
+    <%= f.submit :submit %>
+    
+  <% end %>

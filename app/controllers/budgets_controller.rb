@@ -19,8 +19,7 @@ class BudgetsController < ApplicationController
     # With User.budgets.build
     @budget = current_user.budgets.new( budget_params )
     if @budget.save
-      # Should redirect to User where budget can be displayed
-      redirect_to @budget
+      redirect_to @budget, notice: 'Successfully created budget'
     else
       # Error message should display¨
       render :new
@@ -51,11 +50,8 @@ class BudgetsController < ApplicationController
     end
   end
 
-  # Will be removed since budget will be showed through user
   def show
-    @budget = Budget.find( params[:id] )
-    # This should come from a categorys table
-    @categorys = %w(rent car phone travel electricity wifi groceries insurance)
+    @categories = @budget.categories
   end
 
   private
