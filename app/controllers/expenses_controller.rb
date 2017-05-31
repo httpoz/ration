@@ -1,6 +1,11 @@
 class ExpensesController < ApplicationController
   
   before_action :set_budget
+  before_action :set_expense, only: [:edit, :update, :destroy]
+  
+  def index
+    @expenses = @budget.expenses
+  end
   
   def new
     # If not making new category
@@ -36,17 +41,28 @@ class ExpensesController < ApplicationController
     end
   end
   
-  def index
-    @expenses = @budget.expenses
+  def edit
+    @category = @expense.category
+  end
+  
+  def update
+    if @expense.update_attributes( expense_parameters )
+      redirect_to budget_expenses_path(@budget), notice: 'Successfully update expense'
+    else
+      render :edit
+    end
   end
   
   def destroy
-    @expense = @budget.expenses.find(params[:id])
     @expense.delete
     redirect_to budget_expenses_path(@budget), alert: 'Successfully deleted expense' 
   end
   
   private
+    def set_expense
+      @expense = @budget.expenses.find(params[:id])
+    end
+    
     def set_budget
       @budget = Budget.find(params[:budget_id])
     end
