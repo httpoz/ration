@@ -7,8 +7,12 @@
       <% end %>
     </div>
     
-    <%= f.hidden_field :category_id %>
-    <%= label_tag "Category: #{@category.name}" %>
+    <%= f.fields_for :category, @expense.category do |builder| %>
+      
+      <%= builder.label :name, "Category: " %>
+      <%= builder.text_field :name, class: 'form-control' %>
+      
+    <% end %>
     
     <div class="form-group">
       <%= label_tag :name %>

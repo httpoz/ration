@@ -8,34 +8,19 @@ class ExpensesController < ApplicationController
   end
   
   def new
-    # If not making new category
-    if params[:category]
-      @category = Category.find_by(id: params[:category])
-      # Checks if category is included in budget
-      if @budget.categories.include?(@category)
-        @expense = Expense.new(category_id: @category.id)
-      else
-        redirect_to @budget, danger: 'Category not found'
-      end
-    else
-      @expense = Expense.new
-    end
+    # Sets the expense's category if creating through a category
+    @expense = Expense.new(category_id: params[:category])
   end
   
   def create
-    @expense = @budget.expenses.build(expense_parameters) 
-    
-    # Checks if a category gets passed from the form
-    if !params[:expense][:category_id]
-      # Creates a new category from the expense form and assigns it to variable
-      @category = Category.find_or_create_by(name: params[:category_name])
-    else
-      @category = Category.find(params[:expense][:category_id])
-    end
+    @category = Category.find_or_create_by(name: expense_parameters[:category][:name])
+    e_params = expense_parameters
+    e_params.delete(:category)
+    @expense = @budget.expenses.build(e_params)
     @expense.category_id = @category.id
     
     if @expense.save 
-      redirect_to @budget, notice: 'Successfully created expense'
+       redirect_to @budget, notice: 'Successfully created expense'
     else
       render :new
     end
@@ -46,7 +31,11 @@ class ExpensesController < ApplicationController
   end
   
   def update
-    if @expense.update_attributes( expense_parameters )
+    @category = Category.find_or_create_by(name: expense_parameters[:category][:name])
+    e_params = expense_parameters
+    e_params.delete(:category)
+    @expense.category_id = @category.id
+    if @expense.update_attributes( e_params )
       redirect_to budget_expenses_path(@budget), notice: 'Successfully update expense'
     else
       render :edit
@@ -68,6 +57,6 @@ class ExpensesController < ApplicationController
     end
       
     def expense_parameters
-      params.require(:expense).permit(:name, :amount, :date, :category_id)
+      params.require(:expense).permit(:name, :amount, :date, :category => [ :name ] )
     end
 end
