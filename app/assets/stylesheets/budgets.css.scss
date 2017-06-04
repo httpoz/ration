@@ -8,9 +8,6 @@
     padding: 10px ;
   }
 }
-.budget{
-  margin-bottom: 100px;
-}
 
 .expenses-index{
   th, td{
@@ -23,5 +20,16 @@ aside{
   h3{
     margin-top: 40px;
     padding: 10px;
+  }
+}
+
+.budget-table{
+  margin-bottom: 20px;
+  td, th{
+    padding: 5px;
+    border: 1px solid gray;
+  }
+  th{
+    padding: 0px 20px;
   }
 }

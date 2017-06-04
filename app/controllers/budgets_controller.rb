@@ -52,6 +52,8 @@ class BudgetsController < ApplicationController
 
   def show
     @categories = @budget.categories
+    # Year is chosen from parameter or defaults to current year
+    @expenses = @budget.expenses.from_year(params[:year] || Date.today.year)
   end
 
   private
