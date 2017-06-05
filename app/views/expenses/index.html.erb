@@ -1,5 +1,5 @@
 <div class="col-md-8 col-md-offset-2">
-  <h3>Showing expenses for <strong><%= @budget.name %></strong></h3>
+  <h3>Showing expenses for <strong><%= link_to @budget.name, @budget %></strong></h3>
   <table class="expenses-index">
     <thead>
       <th>Expense name</th>

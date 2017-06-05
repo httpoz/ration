@@ -4,7 +4,7 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:edit, :update, :destroy]
   
   def index
-    @expenses = @budget.expenses
+    @expenses = @budget.expenses.by_category.by_date
   end
   
   def new
