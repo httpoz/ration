@@ -1,4 +1,7 @@
 .budget-form{
+  h1{
+    margin-bottom: 30px;
+  }
   margin-top: 20px;
   .right-span{
     float: right;
@@ -29,7 +32,13 @@ aside{
     padding: 5px;
     border: 1px solid gray;
   }
+  .money-cell{
+    text-align: right;
+  }
   th{
     padding: 0px 20px;
+  }
+  .category-cell{
+    text-align: center; 
   }
 }

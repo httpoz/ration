@@ -21,17 +21,22 @@
     <!--Loops over a categorys array to create corresponding table data-->
     <% @budget.categories.each do |category| %>
       <tr>
-        <td class="category-field">
+        <td class="category-cell">
           <%= link_to category.name, new_budget_expense_path(@budget, category: category.id) %>
         </td>
         <!-- Creates a <td> for each 12 months containing total expense amount -->
         <% 12.times do |month_number| %>
-          <td id="<%= "#{category.name}  #{month_number}" %>">
+          <td id="<%= "#{category.name}  #{month_number}" %>" class="money-cell">
             <!--passes month and category name to helper method-->
             <%= calculate_monthly(category.name, (month_number + 1)) %>
           </td>
         <% end %>
       </tr>
     <% end %>
+    <tr>
+      <td class="category-cell">
+        <%= link_to " New", new_budget_expense_path( [@budget] ), class: 'btn btn-success' %>
+      </td>
+    </tr>
    </tbody>
 </table>

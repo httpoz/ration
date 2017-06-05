@@ -1,7 +1,9 @@
 <div class="row">
   <aside class="col-md-2">
-    <h3 class="text-center">See all expenses</h3>
-    <%= link_to "Expenses list", budget_expenses_path(@budget), class: "btn btn-primary btn-block" %>
+    <% if !@expenses.empty? %>
+      <h3 class="text-center">See all expenses</h3>
+      <%= link_to "Expenses list", budget_expenses_path(@budget), class: "btn btn-primary btn-block" %>
+    <% end %>
   </aside>
   <div class="col-md-8 budget-form">
     <h1 class="text-center"><%= @budget.name %></h1>
@@ -9,10 +11,8 @@
     <% if !@categories.empty? %>
       <h6> Add expenses by clicking one of your categories</h6>
       <%= render 'spreadsheet' %> 
-      <h6>Create expense in a new category</h6>
-      <%= link_to "New expense", new_budget_expense_path(@budget.id), class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary" %>
+      <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary btn-block" %>
     <% end %>
   </div>
   

@@ -2,11 +2,11 @@
   <h3>Showing expenses for <strong><%= link_to @budget.name, @budget %></strong></h3>
   <table class="expenses-index">
     <thead>
+      <th>Category</th>
       <th>Expense name</th>
       <th>Amount</th>
       <th>Date</th>
       <th>Date of entry</th>
-      <th>Category</th>
     </thead>
     <tbody>
       <%= render @expenses %>
