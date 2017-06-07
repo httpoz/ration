@@ -4,7 +4,8 @@ class ExpensesController < ApplicationController
   before_action :set_expense, only: [:edit, :update, :destroy]
   
   def index
-    @expenses = @budget.expenses.by_category.by_date
+    # Orders expenses by passed param or defaults to order by category
+    @expenses = @budget.expenses.order_by(params[:attribute] || :category)
   end
   
   def new
