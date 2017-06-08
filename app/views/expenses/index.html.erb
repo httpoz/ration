@@ -1,12 +1,15 @@
 <div class="col-md-8 col-md-offset-2">
   <h3>Showing expenses for <strong><%= link_to @budget.name, @budget %></strong></h3>
+  
+  <%= render 'expenses_sort_form' %>
+  
   <table class="expenses-index">
     <thead>
-      <th><%= link_to 'Category', budget_expenses_path(attribute: :category), class: 'btn' %></th>
-      <th><%= link_to 'Expense name', budget_expenses_path(attribute: :name), class: 'btn' %></th>
-      <th><%= link_to 'Amount', budget_expenses_path(attribute: :amount) , class: 'btn' %></th>
-      <th><%= link_to 'Date', budget_expenses_path(attribute: :date), class: 'btn' %></th>
-      <th><%= link_to 'Date of input', budget_expenses_path, class: 'btn' %></th>
+      <th>Category</th>
+      <th>Expense name</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Date of input</th>
     </thead>
     <tbody>
       <%= render @expenses %>

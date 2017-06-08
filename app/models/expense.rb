@@ -8,24 +8,19 @@ class Expense < ApplicationRecord
   validates :date, presence: true
   validates :category, presence: true
   
-  # Scopes to order expenses by its different attributes
-  scope :by_date, -> { order(date: :desc) } 
-  scope :by_category, -> { order(:category_id) }
-  scope :by_amount, -> { order(:amount) }
-  scope :by_name, -> { order(:name) }
-  
   # Returns all expenses form a given year
   def self.from_year(year)
     Expense.where(date: Date.new(year,1,1)..Date.new(year,12,31) )
   end
   
-  # # Chooses scope to sort by based on incoming params
-  def self.order_by(attribute)
+  # Order expenses by attribute passed as URL parameters
+  def self.order_by(attribute, direction = :asc)
     
-    method = "by_#{attribute}"
-    # Uses scope on expenses
+    condition = "#{attribute} #{direction.upcase}"
+    
     begin
-      Expense.send(method)
+      # Uses scope on expenses
+      Expense.order(condition)
     rescue Exception
       # Returns an unsorted collection when passed custom attributes
       Expense.all

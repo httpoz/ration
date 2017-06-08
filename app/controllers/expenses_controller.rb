@@ -1,11 +1,12 @@
 class ExpensesController < ApplicationController
+  before_action :authenticate_user!
   
   before_action :set_budget
   before_action :set_expense, only: [:edit, :update, :destroy]
   
   def index
     # Orders expenses by passed param or defaults to order by category
-    @expenses = @budget.expenses.order_by(params[:attribute] || :category)
+    @expenses = @budget.expenses.includes(:category).order_by(params[:order_by] || :category_id, params[:direction])
   end
   
   def new
