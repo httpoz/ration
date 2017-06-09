@@ -26,7 +26,7 @@
         </td>
         <!-- Creates a <td> for each 12 months containing total expense amount -->
         <% 12.times do |month_number| %>
-          <td id="<%= "#{category.name}  #{month_number}" %>" class="money-cell">
+          <td id="<%= "#{category.name}#{month_number}" %>" class="money-cell">
             <!--passes month and category name to helper method-->
             <%= calculate_monthly(category.name, (month_number + 1)) %>
           </td>

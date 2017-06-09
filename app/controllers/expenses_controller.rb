@@ -6,7 +6,8 @@ class ExpensesController < ApplicationController
   
   def index
     # Orders expenses by passed param or defaults to order by category
-    @expenses = @budget.expenses.includes(:category).order_by(params[:order_by] || :category_id, params[:direction])
+    params[:direction] ||= :asc
+    @expenses = @budget.expenses.includes(:category).order_by((params[:order_by] || :category_id), params[:direction])
   end
   
   def new

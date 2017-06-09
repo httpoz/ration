@@ -22,7 +22,7 @@ class Expense < ApplicationRecord
       # Uses scope on expenses
       Expense.order(condition)
     rescue Exception
-      # Returns an unsorted collection when passed custom attributes
+      # Returns an unsorted collection if passed invalid attributes
       Expense.all
     end
     
