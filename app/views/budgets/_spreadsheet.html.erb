@@ -1,7 +1,7 @@
 <table class="budget-table">
   <thead>
     <tr>
-      <th>Categorys</th>
+      <th id="category-head">Categorys</th>
       <th>Jan</th>
       <th>Feb</th>
       <th>Mar</th>
@@ -22,7 +22,7 @@
     <% @budget.categories.each do |category| %>
       <tr>
         <td class="category-cell">
-          <%= link_to category.name, new_budget_expense_path(@budget, category: category.id) %>
+          <%= link_to category.name, new_budget_expense_path(@budget, category: category.id), remote: true %>
         </td>
         <!-- Creates a <td> for each 12 months containing total expense amount -->
         <% 12.times do |month_number| %>
@@ -34,9 +34,12 @@
       </tr>
     <% end %>
     <tr>
-      <td class="category-cell">
-        <%= link_to " New", new_budget_expense_path( [@budget] ), class: 'btn btn-success' %>
+      <td id="new-category-cell">
+        <%= link_to " New", new_budget_expense_path( @budget ), remote: true, id: 'new-btn', class: 'btn btn-success' %>
+        <!--Hidden form for new expense-->
+        <div id="expense-form" style="display:none;"></div>
       </td>
     </tr>
    </tbody>
 </table>
+

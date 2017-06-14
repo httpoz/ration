@@ -38,7 +38,29 @@ aside{
   th{
     padding: 0px 20px;
   }
-  .category-cell{
+  .category-cell, #category-head{
+    background-color: #F0F8FF;
     text-align: center; 
   }
+}
+
+#new-category-cell{
+  background-color: #F0F8FF;
+  text-align: center;
+}
+
+//New expense form
+.category.col-sm-2{
+  padding: 10px;
+  text-align: left;
+  background-color: #F0F8FF;
+}
+.fgroup{
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+}
+input.btn{
+  margin: 20px 0px;
+  width: 20%;
 }

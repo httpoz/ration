@@ -1,8 +1,10 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user!
-  
   before_action :set_budget
   before_action :set_expense, only: [:edit, :update, :destroy]
+  
+  # Enables javascript responses
+  respond_to :html, :js
   
   def index
     # Orders expenses by passed param or defaults to order by category

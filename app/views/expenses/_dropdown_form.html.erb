@@ -1,0 +1,33 @@
+<%= form_for [@budget, @expense], remote: true do |f| %>
+    
+  <div id="error_explanation">
+    <% if @expense.errors.messages.any? %>
+      <p><%= pluralize(@expense.errors.count, "error") %> prohibited this budget from being saved</p>
+      <%= @expense.errors.full_messages.join(", ") %>
+    <% end %>
+  </div>
+  
+  <div class="category col-sm-2">
+  <%= f.fields_for :category, @expense.category do |builder| %>
+    <%= builder.label :name, "Category" %>
+    <%= builder.text_field :name, class: 'form-control' %>
+  <% end %>
+  </div>
+  
+  <div class="fgroup col-sm-3">
+    <%= label_tag :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  
+  <div class="fgroup col-sm-2">
+    <%= label_tag :amount %>
+    <%= f.text_field :amount, class: 'form-control' %>
+  </div>
+  
+  <div class="fgroup col-sm-3">
+    <%= label_tag :date %>
+    <%= f.date_field :date, class: 'form-control' %>
+  </div>
+  <%= f.submit :submit, class: 'btn btn-primary' %>
+  
+<% end %>

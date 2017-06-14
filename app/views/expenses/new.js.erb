@@ -1,0 +1,7 @@
+$('#expense-form').html("<%= j (render 'dropdown_form') %>");
+
+$('#new-category-cell').attr('colspan', '13').css('background-color', 'white');
+$('#new-btn').css('display', 'none');
+
+$('.category.col-sm-2').css('width', $('.category-cell').width());
+$('#expense-form').slideDown(350);
