@@ -1,5 +1,9 @@
 <div class="row">
   <div class="col-sm-12 text-center">
-    <h1>You are now logged in.</h1>
+    <div class="panel">
+      <div class="panel-body">
+      <%= line_chart @expenses.group_by_month(:date, last: 12, format: "%B '%y").sum(:amount) %>
+      </div>
+    </div>
   </div>
 </div>

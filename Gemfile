@@ -29,6 +29,7 @@ gem 'jquery-rails', '4.1.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'groupdate'
 
 
 # Use Hirb for console table display
@@ -36,6 +37,8 @@ gem 'hirb', '~> 0.7.3'
 
 # bootstrap css framework and dependencies
 gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'chartkick'
 
 # devise for authentication and user management
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', branch: 'master'

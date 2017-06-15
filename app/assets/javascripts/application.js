@@ -15,3 +15,5 @@
 //= require_tree .
 //= require jquery
 //= require bootstrap
+//= require highcharts
+//= require chartkick
