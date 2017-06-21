@@ -19,15 +19,25 @@
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   
+  <div class="fgroup col-sm-3">
+    <%= label_tag :date %>
+    <%= f.date_field :date, value: Date.today, class: 'form-control' %>
+  </div>
+  
   <div class="fgroup col-sm-2">
     <%= label_tag :amount %>
     <%= f.text_field :amount, class: 'form-control' %>
   </div>
   
-  <div class="fgroup col-sm-3">
-    <%= label_tag :date %>
-    <%= f.date_field :date, class: 'form-control' %>
+  <div class="fgroup col-sm-2">
+    <%= check_box_tag :recurring %>
+    <%= label_tag :recurring, 'Recurring?' %>
+    <%= select_tag :frequency,
+      options_for_select([['weekly', 1],['monthly', 2]]),
+      class: 'form-control',
+      disabled: true
+    %>
   </div>
-  <%= f.submit :submit, class: 'btn btn-primary' %>
   
+  <%= f.submit :submit, class: 'btn btn-primary' %>
 <% end %>
