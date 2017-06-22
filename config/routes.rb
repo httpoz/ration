@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   authenticated do
     root 'dashboard#index'
+    resources :profile, only: [:index, :store]
   end
 
     resources :categories
