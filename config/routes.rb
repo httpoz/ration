@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
     resources :categories
-    resources :expenses, only: [:create, :destroy]
-    resources :budgets
-
+    resources :budgets do
+      resources :expenses
+    end
 end

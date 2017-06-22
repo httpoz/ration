@@ -1,11 +1,66 @@
-
 .budget-form{
-  margin-top: 50px;
-}
-.budget{
-  margin-bottom: 100px;
-  td, th{
-    border: 1px solid black;
-    padding: 20px;
+  h1{
+    margin-bottom: 30px;
   }
+  margin-top: 20px;
+  .right-span{
+    float: right;
+  }
+  li{
+    border-bottom: 1px solid #808080;
+    padding: 10px ;
+  }
+}
+
+.expenses-index{
+  th, td{
+    padding: 5px 10px;
+  } 
+}
+
+aside{
+  margin-top: 20px;
+  h3{
+    margin-top: 40px;
+    padding: 10px;
+  }
+}
+
+.budget-table{
+  margin-bottom: 20px;
+  td, th{
+    padding: 5px;
+    border: 1px solid gray;
+  }
+  .money-cell{
+    text-align: right;
+  }
+  th{
+    padding: 0px 20px;
+  }
+  .category-cell, #category-head{
+    background-color: #F0F8FF;
+    text-align: center; 
+  }
+}
+
+#new-category-cell{
+  background-color: #F0F8FF;
+  text-align: center;
+}
+
+//New expense form
+.category.col-sm-2{
+  padding: 10px;
+  text-align: left;
+  background-color: #F0F8FF;
+}
+.fgroup{
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+}
+input.btn{
+  margin: 20px 0px;
+  width: 20%;
 }

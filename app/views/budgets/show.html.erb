@@ -1,41 +1,19 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2 budget-form">
+  <aside class="col-md-2">
+    <% if !@expenses.empty? %>
+      <h3 class="text-center">See all expenses</h3>
+      <%= link_to "Expenses list", budget_expenses_path(@budget), class: "btn btn-primary btn-block" %>
+    <% end %>
+  </aside>
+  <div class="col-md-8 budget-form">
     <h1 class="text-center"><%= @budget.name %></h1>
     
-    <!--This table is an example of a spreatsheet structure-->
-    <!--This code will be changed-->
-    <table class="budget">
-
-      <thead>
-        <th>Categorys go here</th>
-        <th>Jan</th>
-        <th>Feb</th>
-        <th>Mar</th>
-        <th>Apr</th>
-        <th>May</th>
-      </thead>
-      
-      <tbody>
-        <!--Loops over a categorys array to create corresponding table data-->
-        <% @categorys.each do |category| %>
-          <tr>
-            <td><%= category %></td>
-            <!-- creates a <td> for all the months (5 for now) -->
-            <% (1..5).each do |i| %>
-              <td>
-                <!--loops through the expenses
-                <% @budget.expenses.each do |expense| %>
-                  <!-- If the categorys and the date matches, places the expense in the created cell -->
-                  <% if expense.category == category && expense.date.month == i %>
-                    <%= "#{expense.amount}$" %>
-                  <% end %>
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
-       </tbody>
-    </table>
-    <!--Table code ends here-->
+    <% if !@categories.empty? %>
+      <h6> Add expenses by clicking one of your categories</h6>
+      <%= render 'spreadsheet' %> 
+    <% else %>
+      <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary btn-block" %>
+    <% end %>
   </div>
+  
 </div>

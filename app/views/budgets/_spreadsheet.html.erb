@@ -1,0 +1,45 @@
+<table class="budget-table">
+  <thead>
+    <tr>
+      <th id="category-head">Categorys</th>
+      <th>Jan</th>
+      <th>Feb</th>
+      <th>Mar</th>
+      <th>Apr</th>
+      <th>May</th>
+      <th>Jun</th>
+      <th>Jul</th>
+      <th>Aug</th>
+      <th>Sep</th>
+      <th>Oct</th>
+      <th>Nov</th>
+      <th>Dec</th>
+    </tr>
+  </thead>
+    
+  <tbody>
+    <!--Loops over a categorys array to create corresponding table data-->
+    <% @budget.categories.each do |category| %>
+      <tr>
+        <td class="category-cell">
+          <%= link_to category.name, new_budget_expense_path(@budget, category: category.id), remote: true %>
+        </td>
+        <!-- Creates a <td> for each 12 months containing total expense amount -->
+        <% 12.times do |month_number| %>
+          <td id="<%= "#{category.name}#{month_number}" %>" class="money-cell">
+            <!--passes month and category name to helper method-->
+            <%= calculate_monthly(category.name, (month_number + 1)) %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+    <tr>
+      <td id="new-category-cell">
+        <%= link_to " New", new_budget_expense_path( @budget ), remote: true, id: 'new-btn', class: 'btn btn-success' %>
+        <!--Hidden form for new expense-->
+        <div id="expense-form" style="display:none;"></div>
+      </td>
+    </tr>
+   </tbody>
+</table>
+

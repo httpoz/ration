@@ -1,0 +1,18 @@
+<div class="col-md-8 col-md-offset-2">
+  <h3>Showing expenses for <strong><%= link_to @budget.name, @budget %></strong></h3>
+  
+  <%= render 'expenses_sort_form' %>
+  
+  <table class="expenses-index">
+    <thead>
+      <th>Category</th>
+      <th>Expense name</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th>Date of input</th>
+    </thead>
+    <tbody>
+      <%= render @expenses %>
+    </tbody>
+  </table>
+</div>
