@@ -34,12 +34,10 @@ class Expense < ApplicationRecord
     # Uses IceCube to create a schedule object 
     schedule = IceCube::Schedule.new(self.date)
     
-    # Returns weekly, monthly or bi monthly until given end_date
+    # Returns monthly or bi monthly until given end_date
     if frequency == "1"
-      schedule.add_recurrence_rule IceCube::Rule.weekly.until(end_date)
-    elsif frequency == "2"
       schedule.add_recurrence_rule IceCube::Rule.monthly.until(end_date)
-    elsif frequency == "3"
+    elsif frequency == "2"
       schedule.add_recurrence_rule IceCube::Rule.monthly(2).until(end_date)
     end
     schedule
