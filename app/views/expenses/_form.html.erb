@@ -30,7 +30,7 @@
     <%= check_box_tag :recurring %>
     <%= label_tag :recurring, 'Recurring?' %>
     <%= select_tag :frequency,
-      options_for_select([['weekly', 1],['monthly', 2]]),
+      options_for_select([['weekly', 1],['monthly', 2]], ['bi-monthly', 3]),
       class: 'form-control',
       disabled: true
     %>

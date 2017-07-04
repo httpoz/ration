@@ -12,16 +12,19 @@ $(document).on("turbolinks:load", function(){
   });
   
   function enableSelect(){
-    console.log("method runs");
     var checkBox = $('#recurring');
+    var end_date = $('#end_date');
     var select = $('#frequency');
     
     // Enables or disables the element based on its' current status
     if (checkBox.is(':checked')){
       select.attr('disabled', false);
+      end_date.attr('disabled', false);
     }else{
       select.attr('disabled', true);
+      end_date.attr('disabled', true);
     }
-  };
-  
+
+  }
+
 });
