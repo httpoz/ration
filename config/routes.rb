@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :profile, only: [:index, :store]
   end
 
-    resources :categories
-    resources :budgets do
-      resources :expenses
-    end
+  resources :categories
+  resources :budgets do
+    resources :expenses
+  end
 end
