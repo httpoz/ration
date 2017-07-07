@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class BudgetsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    sign_in users(:oskar)
     @budget = budgets(:one)
   end
 
@@ -17,7 +20,7 @@ class BudgetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create budget" do
     assert_difference('Budget.count') do
-      post budgets_url, params: { budget: {  } }
+      post budgets_url, params: { budget: { name: 'Test budget' } }
     end
 
     assert_redirected_to budget_url(Budget.last)
@@ -34,8 +37,8 @@ class BudgetsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update budget" do
-    patch budget_url(@budget), params: { budget: {  } }
-    assert_redirected_to budget_url(@budget)
+    patch budget_url(@budget), params: { budget: { name: 'Test Budget 2' } }
+    assert_response :success
   end
 
   test "should destroy budget" do
