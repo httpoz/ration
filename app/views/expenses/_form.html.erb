@@ -1,31 +1,40 @@
 <%= form_for [@budget, @expense], remote: true do |f| %>
-    
-    <div id="error_explanation">
-      <% if @expense.errors.messages.any? %>
-        <p><%= pluralize(@expense.errors.count, "error") %> prohibited this budget from being saved</p>
-        <%= @expense.errors.full_messages.join(", ") %>
-      <% end %>
-    </div>
-    
-    <%= f.fields_for :category, @expense.category do |builder| %>
-      
-      <%= builder.label :name, "Category: " %>
-      <%= builder.text_field :name, class: 'form-control' %>
-      
+  
+  <div id="error_explanation">
+    <% if @expense.errors.messages.any? %>
+      <p><%= pluralize(@expense.errors.count, "error") %> prohibited this budget from being saved</p>
+      <%= @expense.errors.full_messages.join(", ") %>
     <% end %>
+  </div>
+  
+  <%= f.fields_for :category, @expense.category do |builder| %>
     
-    <div class="form-group">
-      <%= label_tag :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :amount %>
-      <%= f.text_field :amount, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :date %>
-      <%= f.date_field :date, class: 'form-control' %>
-    </div>
-    <%= f.submit :submit %>
+    <%= builder.label :name, "Category: " %>
+    <%= builder.text_field :name, class: 'form-control' %>
     
   <% end %>
+  
+  <div class="form-group">
+    <%= label_tag :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :amount %>
+    <%= f.text_field :amount, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :date %>
+    <%= f.date_field :date, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= check_box_tag :recurring %>
+    <%= label_tag :recurring, 'Recurring?' %>
+    <%= select_tag :frequency,
+      options_for_select([['weekly', 1],['monthly', 2]], ['bi-monthly', 3]),
+      class: 'form-control',
+      disabled: true
+    %>
+  </div>
+  <%= f.submit :submit %>
+  
+<% end %>

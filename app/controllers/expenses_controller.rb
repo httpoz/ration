@@ -24,10 +24,38 @@ class ExpensesController < ApplicationController
     @expense = @budget.expenses.build(e_params)
     @expense.category_id = @category.id
     
-    if @expense.save 
-       redirect_to @budget, notice: 'Successfully created expense'
+    # Create a single expense if recurring is unchecked
+    if !params[:recurring]
+      if @expense.save 
+         redirect_to @budget, notice: 'Successfully created expense'
+      else
+        render :new
+      end
+    # Create recurring expenses
     else
-      render :new
+      @expense.end_date = params[:end_date]
+      @expense.frequency = params[:frequency]
+      
+      # Defines a schedule/array of dates 
+      schedule = @expense.set_schedule()
+      
+      # If the input is valid
+      if @expense.valid?
+        if schedule.all_occurrences.count != 0
+          puts "runs"
+          # Creates recurring expenses until the set end date
+          schedule.each_occurrence do |occurrence|
+            @expense = @budget.expenses.build(e_params)
+            @expense.attributes = { date: occurrence, category_id: @category.id }
+            @expense.save
+          end
+          redirect_to @budget, notice: 'Successfully created expenses'
+        else  
+          render :new
+        end
+      else
+        render :new
+      end
     end
   end
   
