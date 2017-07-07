@@ -24,5 +24,7 @@
 
 .DS_Store
 
+/.idea
+
 ration.sublime-project
 ration.sublime-workspace
