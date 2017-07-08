@@ -30,10 +30,12 @@
     <%= check_box_tag :recurring %>
     <%= label_tag :recurring, 'Recurring?' %>
     <%= select_tag :frequency,
-      options_for_select([['weekly', 1],['monthly', 2]], ['bi-monthly', 3]),
+      options_for_select([['monthly', 1], ['bi-monthly', 2]]),
       class: 'form-control',
       disabled: true
     %>
+    <%= label_tag :end_date %>
+    <%= date_field_tag(:end_date, Date.today(), disabled: true, class: 'form-control') %>
   </div>
   <%= f.submit :submit %>
   

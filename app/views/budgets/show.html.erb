@@ -12,11 +12,7 @@
     <%= render 'year_picker' %>
   </div>
   <div class="col-md-8 budget-form">
-    <% if !@categories.empty? %>
-      <h6> Add expenses by clicking one of your categories</h6>
-      <%= render 'spreadsheet' %> 
-    <% else %>
-      <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary btn-block" %>
-    <% end %>
+    <h6> Add expenses by clicking one of your categories</h6>
+    <%= render 'spreadsheet' %> 
   </div>
 </div>
