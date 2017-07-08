@@ -7,10 +7,11 @@ Rails.application.routes.draw do
 
   authenticated do
     root 'dashboard#index'
+    resources :profile, only: [:index, :store]
   end
 
-    resources :categories
-    resources :budgets do
-      resources :expenses
-    end
+  resources :categories
+  resources :budgets do
+    resources :expenses
+  end
 end

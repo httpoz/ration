@@ -17,7 +17,7 @@ class BudgetsController < ApplicationController
   def create
     # This will instead be build through User association
     # With User.budgets.build
-    @budget = current_user.budgets.new( budget_params )
+    @budget = current_user.budgets.new(budget_params)
     if @budget.save
       redirect_to @budget, notice: 'Successfully created budget'
     else
@@ -32,7 +32,7 @@ class BudgetsController < ApplicationController
     respond_to do |format|
       if @budget.update(budget_params)
         format.html { redirect_to @budget, notice: 'Budget was successfully updated.' }
-        format.json { render :show, status: :ok, location: @budget }
+        format.json { render json: @budget, status: :ok}
       else
         format.html { render :edit }
         format.json { render json: @budget.errors, status: :unprocessable_entity }
@@ -62,9 +62,11 @@ class BudgetsController < ApplicationController
   end
 
   private
-    def set_budget
-      @budget = Budget.find(params[:id])
-    end
+
+  def set_budget
+    @budget = Budget.find(params[:id])
+  end
+
   def budget_params
     params.require(:budget).permit(:name)
   end
