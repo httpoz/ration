@@ -1,13 +1,17 @@
 <div class="row">
   <aside class="col-md-2">
+    <h2><%= @budget.name %></h2>
+    <p>Currency: USD $</p>
     <% if !@expenses.empty? %>
-      <h3 class="text-center">See all expenses</h3>
-      <%= link_to "Expenses list", budget_expenses_path(@budget), class: "btn btn-primary btn-block" %>
+      <%= link_to "All expenses", budget_expenses_path(@budget), class: "btn btn-primary btn-block" %>
+      <%= link_to "Settings", edit_budget_path(@budget), class: "btn btn-warning btn-block"%>
+      <%= link_to "Income", '#', class: "btn btn-success btn-block" %>
     <% end %>
   </aside>
+  <div class="col-md-10">
+    <%= render 'year_picker' %>
+  </div>
   <div class="col-md-8 budget-form">
-    <h1 class="text-center"><%= @budget.name %></h1>
-    
     <% if !@categories.empty? %>
       <h6> Add expenses by clicking one of your categories</h6>
       <%= render 'spreadsheet' %> 
@@ -15,5 +19,4 @@
       <%= link_to "Create your first expense", new_budget_expense_path(@budget.id), class: "btn btn-primary btn-block" %>
     <% end %>
   </div>
-  
 </div>

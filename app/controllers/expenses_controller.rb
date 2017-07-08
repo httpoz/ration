@@ -31,7 +31,7 @@ class ExpensesController < ApplicationController
       else
         render :new
       end
-    # Create recurring expenses
+    # Else create recurring expenses
     else
       @expense.end_date = params[:end_date]
       @expense.frequency = params[:frequency]
@@ -42,7 +42,6 @@ class ExpensesController < ApplicationController
       # If the input is valid
       if @expense.valid?
         if schedule.all_occurrences.count != 0
-          puts "runs"
           # Creates recurring expenses until the set end date
           schedule.each_occurrence do |occurrence|
             @expense = @budget.expenses.build(e_params)

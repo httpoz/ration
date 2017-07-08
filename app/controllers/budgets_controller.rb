@@ -52,8 +52,13 @@ class BudgetsController < ApplicationController
 
   def show
     @categories = @budget.categories
-    # Year is chosen from parameter or defaults to current year
-    @expenses = @budget.expenses.includes(:category).from_year(params[:year] || Date.today.year)
+    # Sets year from params or todays date
+    if params[:year] && params[:year].to_i >= 2.years.ago.year && params[:year].to_i <= (Date.today.year + 2) 
+      @year = params[:year].to_i
+    else
+      @year = Date.today.year
+    end
+    @expenses = @budget.expenses.includes(:category).from_year(@year)
   end
 
   private

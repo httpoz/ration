@@ -1,0 +1,4 @@
+<%= form_tag(budget_path(@budget), method: :get, id: 'year_form') do %>
+  <%= label_tag 'Year' %>
+  <%= select_tag :year, options_for_select((2.years.ago.year..(Date.today.year + 2)).to_a, @year) %>
+<% end %>

@@ -15,7 +15,7 @@
       <tr>
         <td><%= budget.name %></td>
         <td>
-          <%= link_to 'Show', budget, class: "btn btn-link" %>
+          <%= link_to 'Show', budget_path(budget, year: Date.today.year), class: "btn btn-link" %>
           <%= link_to 'Edit', edit_budget_path(budget), class: "btn btn-link" %>
           <%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
         </td>
