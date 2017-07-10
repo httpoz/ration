@@ -1,5 +1,5 @@
 class Budget < ApplicationRecord
-
+  has_many :incomes, dependent: :destroy
   has_many :expenses, dependent: :destroy
   # The distinct option prevents budgets from saving multiple categories
   has_many :categories, -> { distinct }, through: :expenses, validate: :false

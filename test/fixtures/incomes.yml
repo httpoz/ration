@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  income: 9.99
+  name: MyString
+  monthly: false
+
+two:
+  income: 9.99
+  name: MyString
+  monthly: false
