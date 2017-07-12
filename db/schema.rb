@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170709162337) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.decimal "income"
+    t.decimal "amount"
     t.string "name"
     t.boolean "monthly"
     t.date "date"

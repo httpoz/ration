@@ -1,7 +1,7 @@
 class CreateIncomes < ActiveRecord::Migration[5.1]
   def change
     create_table :incomes do |t|
-      t.decimal :income
+      t.decimal :amount
       t.string :name
       t.boolean :monthly
       t.date :date

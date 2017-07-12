@@ -6,7 +6,12 @@ class IncomesController < ApplicationController
   end
   
   def create
-    
+    @income = @budget.incomes.build(income_params)
+    if @income.save
+      redirect_to @budget, notice: "Successfully added income to #{@budget.name}"
+    else
+      render :new
+    end
   end
   
   private
