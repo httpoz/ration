@@ -48,7 +48,8 @@
     </div><!--/.nav-collapse -->
   </div>
 </nav>
-<div class="container">
+<%= yield :head %>
+<div class="container dashboard">
   <div class="row">
     <div class="col-sm-12">
       <%= flash_messages %>

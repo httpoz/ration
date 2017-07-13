@@ -38,10 +38,15 @@ gem 'hirb', '~> 0.7.3'
 # bootstrap css framework and dependencies
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'react-rails'
+
 # Ice Cube for Schedule creation
 gem 'ice_cube', '0.16.1'
 
+# chartkick + high charts for dashboard charts
 gem 'chartkick'
+
+gem 'responders'
 
 # devise for authentication and user management
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'

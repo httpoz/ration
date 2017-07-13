@@ -1,0 +1,13 @@
+.header {
+  min-height: 50vh;
+  &-home {
+    background: {
+      image: image_url('hero.jpg');
+      size: cover;
+      position: center;
+    }
+    h1, p {
+      color: #fff;
+    }
+  }
+}
