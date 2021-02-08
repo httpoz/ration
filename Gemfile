@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 6.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -53,12 +53,11 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 group :production do
   # Use PostGreSQL for heroku database
-  gem 'pg', '0.18.4'
 end
 
 group :development, :test do
   # Use sqlite3 as the test and development database for Active Record
-  gem 'sqlite3', '1.3.12'
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
